@@ -1,0 +1,26 @@
+
+// Viewport Dimensions
+// -------------------------
+$size-mobile:               640px;     // Maximum mobile screen width
+$size-tablet:  $size-mobile + 1px;     // Minimum tablet screen width
+$size-desktop:              960px;     // Minimum desktop screen width
+$size-widescreen:          1200px;     // Minimum wide screen width
+$size-facebook-iframe:      760px;     // Facebook iFrame
+$size-iphone-landscape:     480px;     // 480*320 - iPhone Landscpe
+$size-iphone-portrait:      320px;     // 320*480 - iPhone Portrait
+$size-sticky-trigger:       660px;      // Size at which the sticky footer gets triggered
+
+
+// Main Colors
+$color-gray-light:    #f7f7f7;
+$color-gray-normal:   #d8d8d8;
+$color-gray-dark:     #777777;
+$color-gray-darken:   #606060;
+
+$color-white:         #ffffff;
+$color-blue:          #446bf1;
+$color-red:           #c83c3c;
+
+// Standart Dimensions
+
+$bradius: 4px; // standard border radius
