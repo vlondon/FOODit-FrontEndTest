@@ -2,14 +2,26 @@
 
   <div ng-include="'/views/basket.html'" class="basket-wrapper"></div>
 
-  <div class="menu-wrapper">
+  <div class="menu-wrapper" ng-Controller="MainCtrl">
     <ul class="meals">
         <li class="meal" ng-repeat="meal in menu.meals">
-            <p class="price">{{meal.price}}</p>
-            <img class="image" ng-src="{{meal.primaryImageUrl}}">
-            <h4 class="name">{{meal.name}}</h4>
-            <p class="description">{{meal.description}}</p>
+            <div class="info-main">
+              <p class="price">{{meal.price | currency:'£'}}</p>
+              <img class="image" ng-src="{{meal.primaryImageUrl}}">
+              <h4 class="name">{{meal.name}}</h4>
+            </div>
+            <div class="info-wrapper">
+              <div class="info">
+                <ul class="tags">
+                  <li ng-repeat="tag in meal.tags | tagsFilter:'tags'" class="tag">
+                    <span class="icon {{tag}}"></span>
+                  </li>
+                </ul>
+                <p class="description">{{meal.description || 'No description' }}</p>
 
+                <a class="btn-add" ng-click="addProduct()">Add To Your Order</a>
+              </div>
+            </div>
         </li>
     </ul>
   </div>

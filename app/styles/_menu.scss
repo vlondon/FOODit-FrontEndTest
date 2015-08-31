@@ -1,13 +1,133 @@
 ////////////////////////////////// MENU //////////////////////////////////
 
+$title-radius-width: 50%;
+$title-radius-height: 8px;
+
+$tag-size: 32px;
+
+@mixin tagIcon($img) {
+  background-image: url("../images/tag--" + $img + ".svg");
+  background-size: 100%;
+  height: $tag-size;
+  width: $tag-size;
+}
+
+@mixin top-radius($width, $height) {
+  border-top-left-radius: $width $height;
+  border-top-right-radius: $width $height;
+}
+
 .menu-wrapper {
-  .meal {
-    border: solid 1px $color-gray-normal;
-    border-radius: $bradius;
+
+  .meals {
+    padding: 20px;
   }
 
+  .meal {
+    position: relative;
+    border: solid 1px $color-gray-normal;
+    border-radius: $bradius;
+    background-color: $color-white;
+    margin-bottom: 20px;
+  }
+
+  // Main product info
+
+  .info-main {
+    position: relative;
+  }
+
+  .price {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 15px;
+    margin: 0;
+    background-color: $color-blue;
+    color: $color-white;
+    font-style: italic;
+  }
 
   img {
     width: 100%;
   }
+
+  .name {
+    position: absolute;
+    bottom: 0;
+    min-height: 90px;
+    width: 100%;
+    padding: 20px 20px 54px;
+    text-align: center;
+    background-color: rgba(255,255,255,.6);
+    color: $color-gray-darken;
+    @include top-radius($title-radius-width, $title-radius-height);
+  }
+
+  // Additional Info
+
+  .info-wrapper {
+    position: relative;
+  }
+
+  .info {
+    margin-top: -30px;
+    padding: 20px;
+    background-color: $color-white;
+    border-radius: $bradius;
+    @include top-radius($title-radius-width, $title-radius-height);
+  }
+
+  .description {
+    color: $color-gray-dark;
+  }
+
+  .btn-add {
+    display: block;
+    background-color: $color-blue;
+    color: $color-white;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+    &:hover, &:active, &:focus {
+      background-color: darken($color-blue, 10%);
+    }
+  }
+
+  // Tags
+
+  .tags {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: $tag-size;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .tag {
+    display: inline-block;
+    list-style: none;
+    .icon {
+      display: inline-block;
+      &.charcoal        { @include tagIcon('charcoal'); }
+      &.cheese          { @include tagIcon('cheese'); }
+      &.chicken         { @include tagIcon('chicken'); }
+      &.grilled         { @include tagIcon('grilled'); }
+      &.high_in_protein { @include tagIcon('high-protein'); }
+      &.lamb            { @include tagIcon('lamb'); }
+      &.pasta           { @include tagIcon('pasta'); }
+      &.peanut          { @include tagIcon('peanut'); }
+      &.pork            { @include tagIcon('peanut'); }
+      &.seafood         { @include tagIcon('seafood'); }
+      &.snack           { @include tagIcon('snack'); }
+      &.spicy           { @include tagIcon('spicy'); }
+      &.starter         { @include tagIcon('starter'); }
+      &.sweet           { @include tagIcon('sweet'); }
+      &.vegetarian      { @include tagIcon('vegetarian'); }
+    }
+  }
+
 }

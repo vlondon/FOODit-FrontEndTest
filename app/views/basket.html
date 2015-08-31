@@ -1,3 +1,52 @@
-<div class="basket">
+<div class="basket {{basketVisible ? 'open' : 'closed'}}" ng-Controller="BasketCtrl">
+
+  <div class="basket-container">
+
+    <div class="basket-products" ng-show="basketVisible">
+
+      <a class="basket-close" ng-click="showBasket(false)">&times;</a>
+
+      <h3>Your Order</h3>
+      <p class="sub">Your Delicious Restaurant</p>
+
+      <div class="product-type" ng-repeat="(type, items) in productsByType">
+
+        <p class="total-count">{{items.total}} {{(type === 'main_courses') ? 'mains' : 'other'}}</p>
+
+        <div class="products-list">
+          <div class="item" ng-repeat="meal in items.meals">
+            <div class="item-info">
+              <div>
+                <div class="plus" ng-click="addProduct()">&#43;</div>
+                <div class="count">{{meal.count}}</div>
+                <div class="minus" ng-click="removeProduct()">&#45;</div>
+              </div>
+            </div>
+            <div class="item-name">{{meal.name}}</div>
+            <div class="item-price">{{(meal.price * meal.count) | currency:"£"}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="basket-summary">
+
+      <div ng-show="!basketVisible && totalCount === 0">
+        <p class="msg">It&#8216;s time to order some delicious food</p>
+      </div>
+
+      <div class="basket-short" ng-show="totalCount > 0" ng-click="showBasket(true)">
+        <div class="basket-short-products" ng-show="!basketVisible">
+          <p ng-repeat="(type, items) in productsByType" class="total-count">{{items.total}} {{type === 'main_courses' ? 'main' + ((items.total > 1) ? 's' : '') : 'other'}}</p>
+        </div>
+        <p class="btn-order-confirm" ng-show="basketVisible">Confirm Your Order</p>
+        <p class="total-price">{{totalPrice | currency:"£"}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="basket-overlay" ng-click="showBasket(false)"></a>
 
 </div>
